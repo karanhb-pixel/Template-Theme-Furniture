@@ -2,7 +2,7 @@
 /**
  * The template for displaying the footer
  *
- * @package Custom-Catalog
+ * @package Biz-Catalog
  */
 ?>
 
@@ -10,12 +10,16 @@
 
 <footer class="site-footer">
 	<div class="container footer-inner">
-		<p>© <span id="year"></span> MR Furniture – Demo Catalog Website.</p>
+		<?php if ($copyright = get_field('footer_copyright', 'option')) : ?>
+		<p><?php echo nl2br(esc_html($copyright)); ?></p>
+		<?php else : ?>
+		<p>© <span id="year"></span> Your Company Name – Business Catalog Website.</p>
+		<?php endif; ?>
 		<div class="footer-links">
-			<a href="#hero"><?php esc_html_e('Home', 'custom-catalog'); ?></a>
-			<a href="#services"><?php esc_html_e('Services', 'custom-catalog'); ?></a>
-			<a href="#projects"><?php esc_html_e('Projects', 'custom-catalog'); ?></a>
-			<a href="#contact"><?php esc_html_e('Contact', 'custom-catalog'); ?></a>
+			<a href="#hero"><?php esc_html_e('Home', 'biz-catalog'); ?></a>
+			<a href="#services"><?php esc_html_e('Services', 'biz-catalog'); ?></a>
+			<a href="#projects"><?php esc_html_e('Projects', 'biz-catalog'); ?></a>
+			<a href="#contact"><?php esc_html_e('Contact', 'biz-catalog'); ?></a>
 		</div>
 	</div>
 </footer><!-- #colophon -->

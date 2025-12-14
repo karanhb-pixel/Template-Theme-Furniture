@@ -2,7 +2,7 @@
 /**
  * The front page template file
  *
- * @package Custom-Catalog
+ * @package Biz-Catalog
  */
 
 get_header();
@@ -13,14 +13,25 @@ get_header();
 	<!-- HERO -->
 	<section id="hero" class="hero">
 		<div class="hero-overlay"></div>
-		<img src="https://placehold.co/1600x700?text=Interior+Hero+Image" alt="Modern interior design hero placeholder"
+		<?php
+		$hero_image = get_field('hero_image', 'option');
+		$hero_image_url = $hero_image ? $hero_image['url'] : "https://placehold.co/1600x700?text=Hero+Image";
+		$hero_image_alt = $hero_image ? $hero_image['alt'] : 'Hero background image';
+		?>
+		<img src="<?php echo esc_url($hero_image_url); ?>" alt="<?php echo esc_attr($hero_image_alt); ?>"
 			class="hero-bg" />
 		<div class="container hero-content">
-			<p class="hero-kicker">Interior Designing &amp; Modular Furniture</p>
-			<h1>Transforming Spaces.<br>Crafting Futures.</h1>
+			<?php if ($hero_kicker = get_field('hero_kicker', 'option')) : ?>
+			<p class="hero-kicker"><?php echo esc_html($hero_kicker); ?></p>
+			<?php endif; ?>
+			<?php if ($hero_title = get_field('hero_title', 'option')) : ?>
+			<h1><?php echo esc_html($hero_title); ?></h1>
+			<?php endif; ?>
+			<?php if ($hero_subtitle = get_field('hero_subtitle', 'option')) : ?>
 			<p class="hero-subtitle">
-				Demo catalog for MR Furniture showcasing interior design, modular kitchens, wardrobes and more.
+				<?php echo esc_html($hero_subtitle); ?>
 			</p>
+			<?php endif; ?>
 			<div class="hero-actions">
 				<a href="#projects" class="btn btn-primary">View Catalog</a>
 				<a href="#contact" class="btn btn-outline">Request Free Consultation</a>
@@ -32,10 +43,17 @@ get_header();
 	<section id="services" class="section section-light">
 		<div class="container">
 			<header class="section-header">
-				<h2>Modular Furniture &amp; Interior Services</h2>
-				<p>Explore the key service categories offered by MR Furniture.</p>
+				<?php if ($services_title = get_field('services_title', 'option')) : ?>
+				<h2><?php echo esc_html($services_title); ?></h2>
+				<?php else : ?>
+				<h2>Our Services</h2>
+				<?php endif; ?>
+				<?php if ($services_description = get_field('services_description', 'option')) : ?>
+				<p><?php echo esc_html($services_description); ?></p>
+				<?php else : ?>
+				<p>Explore the key service categories offered by our company.</p>
+				<?php endif; ?>
 			</header>
-
 
 			<div class="grid grid-4">
 
@@ -50,12 +68,12 @@ get_header();
 
 						// Optional: Add default placeholder images for each service
 						$image = get_field('service_image', 'service_' . $service->term_id);
-$image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . urlencode($service->name);
+						$image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . urlencode($service->name);
 						?>
 
 						<a href="<?php echo esc_url(get_term_link($service)); ?>" class="card service-card">
 							<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($service->name); ?>">
-							<div class="card-body">
+    <div class="card-body">
 								<h3><?php echo esc_html($service->name); ?></h3>
 
 								<?php if (!empty($service->description)): ?>
@@ -68,21 +86,29 @@ $image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . url
 
 						<?php
 					endforeach;
-				else:
-					echo "<p>No services found.</p>";
-				endif;
-				?>
+					else:
+						echo "<p>No services found.</p>";
+					endif;
+					?>
 
 			</div>
 
-	</section>
+		</section>
 
 	<!-- PROJECT CATALOG -->
 	<section id="projects" class="section">
 		<div class="container">
 			<header class="section-header">
-				<h2>Latest Creations (Demo Catalog)</h2>
-				<p>Sample projects to demonstrate how the portfolio grid will look.</p>
+				<?php if ($projects_title = get_field('projects_title', 'option')) : ?>
+				<h2><?php echo esc_html($projects_title); ?></h2>
+				<?php else : ?>
+				<h2>Latest Projects</h2>
+				<?php endif; ?>
+				<?php if ($projects_description = get_field('projects_description', 'option')) : ?>
+				<p><?php echo esc_html($projects_description); ?></p>
+				<?php else : ?>
+				<p>Explore our recent work and projects.</p>
+				<?php endif; ?>
 			</header>
 			<?php
 			$services = get_terms(array(
@@ -98,10 +124,10 @@ $image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . url
 				<a href="<?php echo home_url('/projects/'); ?>"
 					class="service-tab <?php echo (is_post_type_archive('project')) ? 'active' : ''; ?>">
 					All
-				</a>
+					</a>
 
 				<?php foreach ($services as $service): ?>
-					<a href="<?php echo esc_url(get_term_link($service)); ?>"
+					<a href="<?php echo esc_url(get_term_link($service)); ?>">
 						class="service-tab <?php echo (isset($current_service->term_id) && $current_service->term_id === $service->term_id) ? 'active' : ''; ?>">
 						<?php echo esc_html($service->name); ?>
 					</a>
@@ -182,25 +208,39 @@ $image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . url
 	<section id="about" class="section section-light">
 		<div class="container about-grid">
 			<div>
-				<h2>About MR Furniture</h2>
+				<?php if ($about_title = get_field('about_title', 'option')) : ?>
+				<h2><?php echo esc_html($about_title); ?></h2>
+				<?php else : ?>
+				<h2>About Us</h2>
+				<?php endif; ?>
+				<?php if ($about_content = get_field('about_content', 'option')) : ?>
+				<p><?php echo esc_html($about_content); ?></p>
+				<?php else : ?>
 				<p>
-					MR Furniture is an interior design and furniture manufacturer based in Pardi, Gujarat.
-					Since 2017 the brand has been delivering office, residential and commercial interiors with
-					a focus on practical layouts and contemporary styling.
+					We are a professional company delivering high-quality services to our clients.
+					This template is designed to showcase your work and help you connect with potential customers.
 				</p>
-				<p>
-					This demo page uses placeholder images and text so you can visualize how your future catalog
-					website could look before adding real projects and content.
-				</p>
+				<?php endif; ?>
 			</div>
 
 			<div class="about-facts">
 				<h3>Key Facts</h3>
 				<ul>
-					<li><strong>Year of Establishment:</strong> 2017</li>
-					<li><strong>Nature of Business:</strong> Manufacturer &amp; Interior Designer</li>
-					<li><strong>Team Size:</strong> Approx. 51–100 people</li>
-					<li><strong>Location:</strong> Pardi, Gujarat, India</li>
+					<?php
+					$facts = get_field('about_facts', 'option');
+					if ($facts && is_array($facts)):
+						foreach ($facts as $fact):
+							?><li><strong><?php echo esc_html($fact['label']); ?>:</strong> <?php echo esc_html($fact['value']); ?></li><?php
+							endforeach;
+							else:
+						?>
+						<li><strong>Year of Establishment:</strong> 2024</li>
+						<li><strong>Nature of Business:</strong> Professional Services</li>
+						<li><strong>Team Size:</strong> 10+ experts</li>
+						<li><strong>Location:</strong> Your Location</li>
+						<?php
+					endif;
+					?>
 				</ul>
 			</div>
 		</div>
@@ -210,8 +250,16 @@ $image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . url
 	<section id="contact" class="section">
 		<div class="container contact-grid">
 			<div>
-				<h2>Request a Free Consultation</h2>
+				<?php if ($contact_title = get_field('contact_title', 'option')) : ?>
+				<h2><?php echo esc_html($contact_title); ?></h2>
+				<?php else : ?>
+				<h2>Contact Us</h2>
+				<?php endif; ?>
+				<?php if ($contact_description = get_field('contact_description', 'option')) : ?>
+				<p><?php echo esc_html($contact_description); ?></p>
+				<?php else : ?>
 				<p>Use the form below to share your project details and we'll get back to you.</p>
+				<?php endif; ?>
 
 				<?php
 				$form_shortcode = get_field('contact_form_shortcode', 'option');
@@ -235,7 +283,7 @@ $image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . url
 						</div>
 						<div class="form-row">
 							<label for="message">Project Details</label>
-							<textarea id="message" rows="4" placeholder="Share requirements, area (sq.ft), city, etc."></textarea>
+							<textarea id="message" rows="4" placeholder="Share your requirements"></textarea>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit Enquiry</button>
 					</form>

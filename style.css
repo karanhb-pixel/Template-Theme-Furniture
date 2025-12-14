@@ -1,6 +1,45 @@
-/* --------------------------------------------------------------
-   Custom Catalog Demo Layout
-   -------------------------------------------------------------- */
+/*
+Theme Name: Biz-Catalog
+Theme URI: https://example.com/biz-catalog
+Author: Your Name
+Author URI: https://example.com
+Description: A generic, reusable WordPress theme for business catalogs, portfolios, and service-based websites. Suitable for furniture stores, interior design studios, modular kitchen companies, showrooms, and similar businesses.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: biz-catalog
+Tags: catalog, portfolio, business, responsive, custom-background, custom-logo, custom-menu, featured-images, translation-ready
+
+This theme supports the following features:
+- Custom Post Types (Projects)
+- Custom Taxonomies (Services)
+- Advanced Custom Fields (ACF) integration
+- Responsive design
+- WooCommerce compatible
+
+=======================================================================
+
+Table of Contents
+=======================================================================
+
+1.0 - Reset & Base Styles
+2.0 - Layout Styles
+3.0 - Header & Navigation
+4.0 - Hero Section
+5.0 - Buttons
+6.0 - Grid & Card Layouts
+7.0 - Services Section
+8.0 - Projects Section
+9.0 - About Section
+10.0 - Contact Section
+11.0 - Footer
+12.0 - Single Project Layout
+13.0 - Gallery Slider
+14.0 - Breadcrumbs
+15.0 - Responsive Design
+
+=======================================================================
+*/
 
 body {
   margin: 0;

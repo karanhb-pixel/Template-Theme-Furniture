@@ -1,20 +1,20 @@
-=== Custom-Catalog ===
+=== Biz-Catalog ===
 
-Contributors: automattic
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Contributors: Your Name
+Tags: catalog, portfolio, business, responsive, custom-background, custom-logo, custom-menu, featured-images, translation-ready
 
-Requires at least: 4.5
-Tested up to: 5.4
-Requires PHP: 5.6
+Requires at least: 5.0
+Tested up to: 6.0
+Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-A starter theme called Custom-Catalog.
+A generic, reusable WordPress theme for business catalogs, portfolios, and service-based websites.
 
 == Description ==
 
-Description
+Biz-Catalog is a flexible WordPress theme designed for businesses that need to showcase their products, services, or projects. Perfect for furniture stores, interior design studios, modular kitchen companies, showrooms, and any catalog-based business. The theme features custom post types, taxonomy support, ACF integration, and responsive design.
 
 == Installation ==
 
