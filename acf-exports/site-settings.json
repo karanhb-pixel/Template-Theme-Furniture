@@ -1,0 +1,386 @@
+[
+    {
+        "key": "group_site_settings",
+        "title": "Site Settings",
+        "fields": [
+            {
+                "key": "field_company_name",
+                "label": "Company Name",
+                "name": "company_name",
+                "type": "text",
+                "instructions": "Your company or business name",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Your Company Name"
+            },
+            {
+                "key": "field_company_tagline",
+                "label": "Company Tagline",
+                "name": "company_tagline",
+                "type": "text",
+                "instructions": "Short tagline or slogan",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Transforming Spaces. Crafting Futures."
+            },
+            {
+                "key": "field_hero_kicker",
+                "label": "Hero Kicker Text",
+                "name": "hero_kicker",
+                "type": "text",
+                "instructions": "Short text above the hero title",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Interior Designing & Modular Furniture"
+            },
+            {
+                "key": "field_hero_title",
+                "label": "Hero Title",
+                "name": "hero_title",
+                "type": "text",
+                "instructions": "Main hero heading",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Transforming Spaces. Crafting Futures."
+            },
+            {
+                "key": "field_hero_subtitle",
+                "label": "Hero Subtitle",
+                "name": "hero_subtitle",
+                "type": "textarea",
+                "instructions": "Description text below the hero title",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Demo catalog showcasing our work and services.",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_hero_image",
+                "label": "Hero Background Image",
+                "name": "hero_image",
+                "type": "image",
+                "instructions": "Upload a hero background image",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "large",
+                "library": "all"
+            },
+            {
+                "key": "field_services_title",
+                "label": "Services Section Title",
+                "name": "services_title",
+                "type": "text",
+                "instructions": "Title for services section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Our Services"
+            },
+            {
+                "key": "field_services_description",
+                "label": "Services Section Description",
+                "name": "services_description",
+                "type": "textarea",
+                "instructions": "Description for services section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Explore the key service categories offered by our company.",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_projects_title",
+                "label": "Projects Section Title",
+                "name": "projects_title",
+                "type": "text",
+                "instructions": "Title for projects section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Latest Projects"
+            },
+            {
+                "key": "field_projects_description",
+                "label": "Projects Section Description",
+                "name": "projects_description",
+                "type": "textarea",
+                "instructions": "Description for projects section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Explore our recent work and projects.",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_about_title",
+                "label": "About Section Title",
+                "name": "about_title",
+                "type": "text",
+                "instructions": "Title for about section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "About Us"
+            },
+            {
+                "key": "field_about_content",
+                "label": "About Section Content",
+                "name": "about_content",
+                "type": "textarea",
+                "instructions": "Main content for about section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "We are a professional company delivering high-quality services to our clients.",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_about_facts",
+                "label": "About Facts",
+                "name": "about_facts",
+                "type": "repeater",
+                "instructions": "Key facts about your company",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Add Fact",
+                "sub_fields": [
+                    {
+                        "key": "field_about_facts_label",
+                        "label": "Label",
+                        "name": "label",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "Year of Establishment"
+                    },
+                    {
+                        "key": "field_about_facts_value",
+                        "label": "Value",
+                        "name": "value",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "2024"
+                    }
+                ]
+            },
+            {
+                "key": "field_contact_title",
+                "label": "Contact Section Title",
+                "name": "contact_title",
+                "type": "text",
+                "instructions": "Title for contact section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Contact Us"
+            },
+            {
+                "key": "field_contact_description",
+                "label": "Contact Section Description",
+                "name": "contact_description",
+                "type": "textarea",
+                "instructions": "Description for contact section",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Use the form below to share your project details and we'll get back to you.",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_contact_phone",
+                "label": "Primary Phone",
+                "name": "contact_phone",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "+91-9876543210"
+            },
+            {
+                "key": "field_contact_email",
+                "label": "Contact Email",
+                "name": "contact_email",
+                "type": "email",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "contact@yourcompany.com"
+            },
+            {
+                "key": "field_contact_address",
+                "label": "Office Address",
+                "name": "contact_address",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Your office address",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_contact_whatsapp",
+                "label": "WhatsApp Number",
+                "name": "contact_whatsapp",
+                "type": "text",
+                "instructions": "Number only or full international format.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "+919876543210"
+            },
+            {
+                "key": "field_contact_form_shortcode",
+                "label": "Contact Form Shortcode",
+                "name": "contact_form_shortcode",
+                "type": "text",
+                "instructions": "Paste a CF7 / Fluent Forms shortcode here, e.g. [contact-form-7 id=\"123\"]",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "[contact-form-7 id=\"123\"]"
+            },
+            {
+                "key": "field_footer_copyright",
+                "label": "Footer Copyright Text",
+                "name": "footer_copyright",
+                "type": "textarea",
+                "instructions": "Copyright text for footer",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "© [current_year] Your Company Name. All rights reserved.",
+                "new_lines": "br"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "site-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    }
+]

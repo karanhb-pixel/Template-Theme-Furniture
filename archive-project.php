@@ -51,8 +51,7 @@ get_header();
 				</a>
 
 				<?php foreach ($services as $service): ?>
-					<a href="<?php echo esc_url(get_term_link($service)); ?>"
-						class="service-tab <?php echo ($is_service_archive && isset($current_service->term_id) && $current_service->term_id == $service->term_id) ? 'active' : ''; ?>">
+					<a href="<?php echo esc_url(get_term_link($service)); ?>" class="service-tab <?php echo ($is_service_archive && isset($current_service->term_id) && $current_service->term_id == $service->term_id) ? 'active' : ''; ?>">
 						<?php echo esc_html($service->name); ?>
 					</a>
 				<?php endforeach; ?>

@@ -1,0 +1,200 @@
+[
+    {
+        "key": "group_project_details",
+        "title": "Project Details",
+        "fields": [
+            {
+                "key": "field_gallery_images",
+                "label": "Gallery Images",
+                "name": "gallery_images",
+                "type": "gallery",
+                "instructions": "Upload multiple images for the project gallery",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "min": "",
+                "max": "",
+                "preview_size": "large",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_project_specs",
+                "label": "Project Specifications",
+                "name": "project_specs",
+                "type": "repeater",
+                "instructions": "Add specifications like area, budget, materials, etc.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Add Specification",
+                "sub_fields": [
+                    {
+                        "key": "field_project_specs_label",
+                        "label": "Label",
+                        "name": "label",
+                        "type": "text",
+                        "instructions": "e.g. Area, Budget, Materials",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "Area"
+                    },
+                    {
+                        "key": "field_project_specs_value",
+                        "label": "Value",
+                        "name": "value",
+                        "type": "text",
+                        "instructions": "e.g. 1200 sq.ft, $50,000",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "1200 sq.ft"
+                    }
+                ]
+            },
+            {
+                "key": "field_project_featured",
+                "label": "Featured Project",
+                "name": "project_featured",
+                "type": "true_false",
+                "instructions": "Mark this project as featured",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_project_client_name",
+                "label": "Client Name",
+                "name": "project_client_name",
+                "type": "text",
+                "instructions": "Name of the client or company",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Client Name"
+            },
+            {
+                "key": "field_project_location",
+                "label": "Project Location",
+                "name": "project_location",
+                "type": "text",
+                "instructions": "City or address where the project is located",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "New York, USA"
+            },
+            {
+                "key": "field_project_year",
+                "label": "Completion Year",
+                "name": "project_year",
+                "type": "number",
+                "instructions": "Year when the project was completed",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "min": "",
+                "max": "",
+                "step": ""
+            },
+            {
+                "key": "field_project_budget",
+                "label": "Budget",
+                "name": "project_budget",
+                "type": "text",
+                "instructions": "Budget range or total cost",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "$50,000 - $100,000"
+            },
+            {
+                "key": "field_project_area",
+                "label": "Project Area",
+                "name": "project_area",
+                "type": "text",
+                "instructions": "Area in sq.ft or sq.m",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "1200 sq.ft"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "project"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    }
+]

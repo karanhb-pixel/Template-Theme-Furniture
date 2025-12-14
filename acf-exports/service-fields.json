@@ -1,0 +1,91 @@
+[
+    {
+        "key": "group_service_fields",
+        "title": "Service Fields",
+        "fields": [
+            {
+                "key": "field_service_image",
+                "label": "Service Image",
+                "name": "service_image",
+                "type": "image",
+                "instructions": "Hero banner image for this service",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "large",
+                "library": "all"
+            },
+            {
+                "key": "field_service_short_description",
+                "label": "Short Description",
+                "name": "service_short_description",
+                "type": "textarea",
+                "instructions": "Brief description for this service",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Description of this service",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_service_icon",
+                "label": "Service Icon",
+                "name": "service_icon",
+                "type": "image",
+                "instructions": "Optional icon for this service",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "thumbnail",
+                "library": "all"
+            },
+            {
+                "key": "field_service_color",
+                "label": "Service Color",
+                "name": "service_color",
+                "type": "color_picker",
+                "instructions": "Accent color for this service",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "taxonomy",
+                    "operator": "==",
+                    "value": "service"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    }
+]

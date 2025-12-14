@@ -4,7 +4,7 @@
  *
  * Displays details of a single Project (CPT: project)
  *
- * @package Custom-Catalog
+ * @package Biz-Catalog
  */
 
 get_header();
