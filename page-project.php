@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for service pages (based on home page layout)
+ * Template for project pages (based on home page layout)
  *
  * @package Biz-Catalog
  */
@@ -15,8 +15,8 @@ get_header();
 		<div class="hero-overlay"></div>
 		<?php
 		$hero_image = get_field('hero_image', 'option');
-		$hero_image_url = $hero_image ? $hero_image['url'] : "https://placehold.co/1600x700?text=Service+Hero+Image";
-		$hero_image_alt = $hero_image ? $hero_image['alt'] : 'Service hero background image';
+		$hero_image_url = $hero_image ? $hero_image['url'] : "https://placehold.co/1600x700?text=Project+Hero+Image";
+		$hero_image_alt = $hero_image ? $hero_image['alt'] : 'Project hero background image';
 		?>
 		<img src="<?php echo esc_url($hero_image_url); ?>" alt="<?php echo esc_attr($hero_image_alt); ?>"
 			class="hero-bg" />
@@ -27,7 +27,7 @@ get_header();
 			<?php if ($hero_title = get_field('hero_title', 'option')) : ?>
 			<h1><?php echo esc_html($hero_title); ?></h1>
 			<?php else : ?>
-			<h1>Our Services</h1>
+			<h1>Our Projects</h1>
 			<?php endif; ?>
 			<?php if ($hero_subtitle = get_field('hero_subtitle', 'option')) : ?>
 			<p class="hero-subtitle">
@@ -35,12 +35,12 @@ get_header();
 			</p>
 			<?php else : ?>
 			<p class="hero-subtitle">
-				Professional services tailored to meet your specific needs and requirements.
+				Explore our portfolio of successful projects and see how we bring visions to life.
 			</p>
 			<?php endif; ?>
 			<div class="hero-actions">
-				<a href="#services" class="btn btn-primary">Explore Services</a>
-				<a href="#contact" class="btn btn-outline">Get Free Quote</a>
+				<a href="#projects" class="btn btn-primary">View Projects</a>
+				<a href="#contact" class="btn btn-outline">Start Your Project</a>
 			</div>
 		</div>
 	</section>
@@ -101,39 +101,12 @@ get_header();
 
 		</section>
 
-	<!-- SERVICE DETAILS -->
-	<section id="service-details" class="section">
-		<div class="container">
-			<header class="section-header">
-				<h2>Why Choose Our Services</h2>
-				<p>Discover what makes our services stand out from the competition</p>
-			</header>
-			<div class="grid grid-3">
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-award" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Premium Quality</h3>
-					<p>High-grade materials and superior craftsmanship in every project.</p>
-				</div>
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-clock" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Timely Delivery</h3>
-					<p>On-time project completion with regular progress updates.</p>
-				</div>
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-tools" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Expert Installation</h3>
-					<p>Professional installation by skilled technicians and designers.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- PROJECT CATALOG -->
-	<section id="projects" class="section section-light">
+	<section id="projects" class="section">
 		<div class="container">
 			<header class="section-header">
-				<h2>Our Recent Work</h2>
-				<p>See our services in action through these completed projects</p>
+				<h2>Featured Projects</h2>
+				<p>Explore our recent work and completed projects.</p>
 			</header>
 			<?php
 			$services = get_terms(array(
@@ -164,7 +137,7 @@ get_header();
 
 				$projects = new WP_Query(array(
 					'post_type' => 'project',
-					'posts_per_page' => 6,
+					'posts_per_page' => 9,
 					'paged' => $paged,
 					'order' => 'DESC',
 				));
@@ -236,7 +209,7 @@ get_header();
 	</section>
 
 	<!-- ABOUT / FACTS -->
-	<section id="about" class="section">
+	<section id="about" class="section section-light">
 		<div class="container about-grid">
 			<div>
 				<?php if ($about_title = get_field('about_title', 'option')) : ?>
@@ -278,7 +251,7 @@ get_header();
 	</section>
 
 	<!-- CONTACT -->
-	<section id="contact" class="section section-light">
+	<section id="contact" class="section">
 		<div class="container contact-grid">
 			<div>
 				<?php if ($contact_title = get_field('contact_title', 'option')) : ?>

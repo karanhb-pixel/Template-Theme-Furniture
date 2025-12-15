@@ -24,8 +24,8 @@
 		<header id="masthead" class="site-header">
 			<div class="container header-inner">
 				<a href="<?php echo home_url('/'); ?>" class="logo">
-					<span class="logo-mark">MR</span>
-					<span class="logo-text">Furniture</span>
+					<span class="logo-mark">Logo Icon</span>
+					<span class="logo-text">Logo Text</span>
 				</a>
 
 

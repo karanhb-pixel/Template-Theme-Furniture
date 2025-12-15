@@ -73,7 +73,7 @@ get_header();
 
 						<a href="<?php echo esc_url(get_term_link($service)); ?>" class="card service-card">
 							<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($service->name); ?>">
-    <div class="card-body">
+    						<div class="card-body">
 								<h3><?php echo esc_html($service->name); ?></h3>
 
 								<?php if (!empty($service->description)): ?>
@@ -92,8 +92,16 @@ get_header();
 					?>
 
 			</div>
+			
+			<!-- All Services Button -->
+			<div class="text-center" style="margin-top: 3rem;">
+				<a href="<?php echo esc_url(home_url('/services/')); ?>" class="btn btn-primary btn-large">
+					All Services
+				</a>
+			</div>
+		</div>
 
-		</section>
+	</section>
 
 	<!-- PROJECT CATALOG -->
 	<section id="projects" class="section">
@@ -200,6 +208,13 @@ get_header();
 				<?php wp_reset_postdata(); ?>
 
 			</div>
+			
+			<!-- View All Projects Button -->
+			<div class="text-center" style="margin-top: 3rem;">
+				<a href="<?php echo home_url('/projects/'); ?>" class="btn btn-primary btn-large">
+					View All Projects
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -242,7 +257,16 @@ get_header();
 					?>
 				</ul>
 			</div>
+
+			<!-- Know More About Us Button -->
+		<div class="text-center" style="margin-top: 3rem;">
+			<a href="<?php echo esc_url(home_url('/about/')); ?>" class="btn btn-primary btn-large">
+				Know More About Us
+			</a>
 		</div>
+		</div>
+		
+		
 	</section>
 
 	<!-- CONTACT -->

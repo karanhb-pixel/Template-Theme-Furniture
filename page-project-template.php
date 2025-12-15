@@ -1,6 +1,11 @@
 <?php
+/*
+Template Name: Project Page Template
+*/
+
 /**
- * Template for service pages (based on home page layout)
+ * Template for project pages (based on home page layout)
+ * This template can be selected in the WordPress page editor
  *
  * @package Biz-Catalog
  */
@@ -15,8 +20,8 @@ get_header();
 		<div class="hero-overlay"></div>
 		<?php
 		$hero_image = get_field('hero_image', 'option');
-		$hero_image_url = $hero_image ? $hero_image['url'] : "https://placehold.co/1600x700?text=Service+Hero+Image";
-		$hero_image_alt = $hero_image ? $hero_image['alt'] : 'Service hero background image';
+		$hero_image_url = $hero_image ? $hero_image['url'] : "https://placehold.co/1600x700?text=Project+Hero+Image";
+		$hero_image_alt = $hero_image ? $hero_image['alt'] : 'Project hero background image';
 		?>
 		<img src="<?php echo esc_url($hero_image_url); ?>" alt="<?php echo esc_attr($hero_image_alt); ?>"
 			class="hero-bg" />
@@ -27,7 +32,7 @@ get_header();
 			<?php if ($hero_title = get_field('hero_title', 'option')) : ?>
 			<h1><?php echo esc_html($hero_title); ?></h1>
 			<?php else : ?>
-			<h1>Our Services</h1>
+			<h1>Our Projects</h1>
 			<?php endif; ?>
 			<?php if ($hero_subtitle = get_field('hero_subtitle', 'option')) : ?>
 			<p class="hero-subtitle">
@@ -35,105 +40,22 @@ get_header();
 			</p>
 			<?php else : ?>
 			<p class="hero-subtitle">
-				Professional services tailored to meet your specific needs and requirements.
+				Explore our portfolio of successful projects and see how we bring visions to life.
 			</p>
 			<?php endif; ?>
 			<div class="hero-actions">
-				<a href="#services" class="btn btn-primary">Explore Services</a>
-				<a href="#contact" class="btn btn-outline">Get Free Quote</a>
-			</div>
-		</div>
-	</section>
-
-	<!-- SERVICES / CATEGORIES -->
-	<section id="services" class="section section-light">
-		<div class="container">
-			<header class="section-header">
-				<?php if ($services_title = get_field('services_title', 'option')) : ?>
-				<h2><?php echo esc_html($services_title); ?></h2>
-				<?php else : ?>
-				<h2>Our Services</h2>
-				<?php endif; ?>
-				<?php if ($services_description = get_field('services_description', 'option')) : ?>
-				<p><?php echo esc_html($services_description); ?></p>
-				<?php else : ?>
-				<p>Explore the key service categories offered by our company.</p>
-				<?php endif; ?>
-			</header>
-
-			<div class="grid grid-4">
-
-				<?php
-				$services = get_terms(array(
-					'taxonomy' => 'service',
-					'hide_empty' => false,
-				));
-
-				if (!empty($services) && !is_wp_error($services)):
-					foreach ($services as $service):
-
-						// Optional: Add default placeholder images for each service
-						$image = get_field('service_image', 'service_' . $service->term_id);
-						$image_url = $image ? $image['url'] : "https://placehold.co/600x400?text=" . urlencode($service->name);
-						?>
-
-						<a href="<?php echo esc_url(get_term_link($service)); ?>" class="card service-card">
-							<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($service->name); ?>">
-    						<div class="card-body">
-								<h3><?php echo esc_html($service->name); ?></h3>
-
-								<?php if (!empty($service->description)): ?>
-									<p><?php echo esc_html(wp_trim_words($service->description, 20)); ?></p>
-								<?php else: ?>
-									<p>Explore our work in <?php echo esc_html($service->name); ?>.</p>
-								<?php endif; ?>
-							</div>
-						</a>
-
-						<?php
-					endforeach;
-					else:
-						echo "<p>No services found.</p>";
-					endif;
-					?>
-
-			</div>
-
-		</section>
-
-	<!-- SERVICE DETAILS -->
-	<section id="service-details" class="section">
-		<div class="container">
-			<header class="section-header">
-				<h2>Why Choose Our Services</h2>
-				<p>Discover what makes our services stand out from the competition</p>
-			</header>
-			<div class="grid grid-3">
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-award" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Premium Quality</h3>
-					<p>High-grade materials and superior craftsmanship in every project.</p>
-				</div>
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-clock" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Timely Delivery</h3>
-					<p>On-time project completion with regular progress updates.</p>
-				</div>
-				<div class="card" style="text-align: center; padding: 2rem;">
-					<i class="fas fa-tools" style="font-size: 3rem; color: #f97316; margin-bottom: 1rem;"></i>
-					<h3>Expert Installation</h3>
-					<p>Professional installation by skilled technicians and designers.</p>
-				</div>
+				<a href="#projects" class="btn btn-primary">View Projects</a>
+				<a href="#contact" class="btn btn-outline">Start Your Project</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- PROJECT CATALOG -->
-	<section id="projects" class="section section-light">
+	<section id="projects" class="section">
 		<div class="container">
 			<header class="section-header">
-				<h2>Our Recent Work</h2>
-				<p>See our services in action through these completed projects</p>
+				<h2>Featured Projects</h2>
+				<p>Explore our recent work and completed projects.</p>
 			</header>
 			<?php
 			$services = get_terms(array(
@@ -164,7 +86,7 @@ get_header();
 
 				$projects = new WP_Query(array(
 					'post_type' => 'project',
-					'posts_per_page' => 6,
+					'posts_per_page' => 9,
 					'paged' => $paged,
 					'order' => 'DESC',
 				));
@@ -236,7 +158,7 @@ get_header();
 	</section>
 
 	<!-- ABOUT / FACTS -->
-	<section id="about" class="section">
+	<section id="about" class="section section-light">
 		<div class="container about-grid">
 			<div>
 				<?php if ($about_title = get_field('about_title', 'option')) : ?>
@@ -278,7 +200,7 @@ get_header();
 	</section>
 
 	<!-- CONTACT -->
-	<section id="contact" class="section section-light">
+	<section id="contact" class="section">
 		<div class="container contact-grid">
 			<div>
 				<?php if ($contact_title = get_field('contact_title', 'option')) : ?>

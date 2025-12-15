@@ -1,6 +1,11 @@
 <?php
+/*
+Template Name: Service Page Template
+*/
+
 /**
  * Template for service pages (based on home page layout)
+ * This template can be selected in the WordPress page editor
  *
  * @package Biz-Catalog
  */
@@ -98,8 +103,16 @@ get_header();
 					?>
 
 			</div>
+			
+			<!-- All Services Button -->
+			<div class="text-center" style="margin-top: 3rem;">
+				<a href="<?php echo esc_url(home_url('/services/')); ?>" class="btn btn-primary btn-large">
+					All Services
+				</a>
+			</div>
+		</div>
 
-		</section>
+	</section>
 
 	<!-- SERVICE DETAILS -->
 	<section id="service-details" class="section">
@@ -124,113 +137,6 @@ get_header();
 					<h3>Expert Installation</h3>
 					<p>Professional installation by skilled technicians and designers.</p>
 				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- PROJECT CATALOG -->
-	<section id="projects" class="section section-light">
-		<div class="container">
-			<header class="section-header">
-				<h2>Our Recent Work</h2>
-				<p>See our services in action through these completed projects</p>
-			</header>
-			<?php
-			$services = get_terms(array(
-				'taxonomy' => 'service',
-				'hide_empty' => false,
-			));
-
-			$current_service = get_queried_object();
-			?>
-
-			<div class="service-tabs">
-
-				<a href="<?php echo home_url('/projects/'); ?>"
-					class="service-tab <?php echo (is_post_type_archive('project')) ? 'active' : ''; ?>">
-					All
-					</a>
-
-				<?php foreach ($services as $service): ?>
-					<a href="<?php echo esc_url(get_term_link($service)); ?>" class="service-tab <?php echo (isset($current_service->term_id) && $current_service->term_id === $service->term_id) ? 'active' : ''; ?>">
-						<?php echo esc_html($service->name); ?>
-					</a>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="grid grid-3">
-				<?php
-				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-				$projects = new WP_Query(array(
-					'post_type' => 'project',
-					'posts_per_page' => 6,
-					'paged' => $paged,
-					'order' => 'DESC',
-				));
-
-				?>
-
-				<?php if ($projects->have_posts()): ?>
-					<?php while ($projects->have_posts()):
-						$projects->the_post(); ?>
-
-						<article class="card project-card project-item">
-							<div class="project-image-wrapper">
-
-								<?php
-								$services = get_the_terms(get_the_ID(), 'service');
-								if (!empty($services) && !is_wp_error($services)):
-									$service_name = $services[0]->name;
-									?>
-									<span class="badge badge-top-left">
-										<?php echo esc_html($service_name); ?>
-									</span>
-								<?php endif; ?>
-
-								<?php if (has_post_thumbnail()): ?>
-									<?php the_post_thumbnail('large'); ?>
-								<?php else: ?>
-									<img src="https://placehold.co/800x500?text=No+Image" alt="">
-								<?php endif; ?>
-							</div>
-
-							<div class="card-body">
-								<h3><?php the_title(); ?></h3>
-								<p><?php echo wp_trim_words(get_the_content(), 20); ?></p>
-
-								<a href="<?php the_permalink(); ?>" class="btn btn-primary" style="margin-top:10px;">
-									View Project
-								</a>
-							</div>
-						</article>
-
-					<?php endwhile;
-					?>
-					<div class="catalog-pagination">
-						<?php
-						echo paginate_links(array(
-							'total' => $projects->max_num_pages,
-							'current' => $paged,
-							'prev_text' => '← Prev',
-							'next_text' => 'Next →'
-						));
-						?>
-					</div>
-
-				<?php else: ?>
-					<p style="grid-column: 1 / -1; text-align:center;">No projects found.</p>
-				<?php endif; ?>
-
-				<?php wp_reset_postdata(); ?>
-
-			</div>
-			
-			<!-- View All Projects Button -->
-			<div class="text-center" style="margin-top: 3rem;">
-				<a href="<?php echo home_url('/projects/'); ?>" class="btn btn-primary btn-large">
-					View All Projects
-				</a>
 			</div>
 		</div>
 	</section>
