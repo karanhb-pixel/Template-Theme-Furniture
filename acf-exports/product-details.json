@@ -1,0 +1,167 @@
+[
+    {
+        "key": "group_product_details",
+        "title": "Product Details",
+        "fields": [
+            {
+                "key": "field_product_price",
+                "label": "Price",
+                "name": "product_price",
+                "type": "text",
+                "instructions": "Product price (e.g. $99.99 or starting from $500)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "$99.99"
+            },
+            {
+                "key": "field_product_sku",
+                "label": "SKU",
+                "name": "product_sku",
+                "type": "text",
+                "instructions": "Product SKU or model number",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "SKU-001"
+            },
+            {
+                "key": "field_product_gallery",
+                "label": "Product Gallery",
+                "name": "product_gallery",
+                "type": "gallery",
+                "instructions": "Upload multiple images for the product gallery",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "min": "",
+                "max": "",
+                "preview_size": "large",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            },
+            {
+                "key": "field_product_specifications",
+                "label": "Product Specifications",
+                "name": "product_specifications",
+                "type": "repeater",
+                "instructions": "Add product specifications like dimensions, materials, etc.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Add Specification",
+                "sub_fields": [
+                    {
+                        "key": "field_product_spec_label",
+                        "label": "Label",
+                        "name": "label",
+                        "type": "text",
+                        "instructions": "e.g. Dimensions, Weight, Material",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "Dimensions"
+                    },
+                    {
+                        "key": "field_product_spec_value",
+                        "label": "Value",
+                        "name": "value",
+                        "type": "text",
+                        "instructions": "e.g. 120cm x 80cm, 25kg, Oak Wood",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placeholder": "120cm x 80cm"
+                    }
+                ]
+            },
+            {
+                "key": "field_product_featured",
+                "label": "Featured Product",
+                "name": "product_featured",
+                "type": "true_false",
+                "instructions": "Mark this product as featured",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_product_short_description",
+                "label": "Short Description",
+                "name": "product_short_description",
+                "type": "textarea",
+                "instructions": "Brief product description for listings",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "Brief description of the product...",
+                "new_lines": "br"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "product"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    }
+]

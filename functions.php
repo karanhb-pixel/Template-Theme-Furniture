@@ -103,6 +103,86 @@ function biz_catalog_setup() {
 add_action( 'after_setup_theme', 'biz_catalog_setup' );
 
 /**
+ * Register Custom Post Types
+ */
+function cc_register_custom_post_types() {
+    // Register Projects Post Type
+    register_post_type('project', array(
+        'labels' => array(
+            'name' => 'Projects',
+            'singular_name' => 'Project',
+            'menu_name' => 'Projects',
+            'add_new' => 'Add New Project',
+            'add_new_item' => 'Add New Project',
+            'edit_item' => 'Edit Project',
+            'new_item' => 'New Project',
+            'view_item' => 'View Project',
+            'search_items' => 'Search Projects',
+            'not_found' => 'No projects found',
+            'not_found_in_trash' => 'No projects found in Trash',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-portfolio',
+        'menu_position' => 5,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'rewrite' => array('slug' => 'projects'),
+        'show_in_rest' => true,
+    ));
+
+    // Register Products Post Type
+    register_post_type('product', array(
+        'labels' => array(
+            'name' => 'Products',
+            'singular_name' => 'Product',
+            'menu_name' => 'Products',
+            'add_new' => 'Add New Product',
+            'add_new_item' => 'Add New Product',
+            'edit_item' => 'Edit Product',
+            'new_item' => 'New Product',
+            'view_item' => 'View Product',
+            'search_items' => 'Search Products',
+            'not_found' => 'No products found',
+            'not_found_in_trash' => 'No products found in Trash',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-products',
+        'menu_position' => 6,
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'rewrite' => array('slug' => 'products'),
+        'show_in_rest' => true,
+    ));
+
+    // Register Service Taxonomy
+    register_taxonomy('service', array('project', 'product'), array(
+        'labels' => array(
+            'name' => 'Services',
+            'singular_name' => 'Service',
+            'menu_name' => 'Services',
+            'all_items' => 'All Services',
+            'edit_item' => 'Edit Service',
+            'view_item' => 'View Service',
+            'update_item' => 'Update Service',
+            'add_new_item' => 'Add New Service',
+            'new_item_name' => 'New Service Name',
+            'search_items' => 'Search Services',
+            'popular_items' => 'Popular Services',
+            'not_found' => 'No services found',
+        ),
+        'hierarchical' => true,
+        'public' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud' => true,
+        'rewrite' => array('slug' => 'service'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'cc_register_custom_post_types');
+
+/**
  * Add SEO meta description for archive pages
  */
 function cc_seo_meta_description() {
@@ -236,6 +316,11 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Load Demo Import functionality.
+ */
+require get_template_directory() . '/inc/demo-import.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -601,67 +686,6 @@ if( function_exists('acf_add_local_field_group') ) {
                 'placeholder' => '+919876543210',
             ),
             array(
-                'key' => 'field_contact_phone',
-                'label' => 'Primary Phone',
-                'name' => 'contact_phone',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => '+91-9876543210',
-            ),
-            array(
-                'key' => 'field_contact_email',
-                'label' => 'Contact Email',
-                'name' => 'contact_email',
-                'type' => 'email',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'contact@yourcompany.com',
-            ),
-            array(
-                'key' => 'field_contact_address',
-                'label' => 'Office Address',
-                'name' => 'contact_address',
-                'type' => 'textarea',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Your office address',
-                'new_lines' => 'br',
-            ),
-            array(
-                'key' => 'field_contact_whatsapp',
-                'label' => 'WhatsApp Number',
-                'name' => 'contact_whatsapp',
-                'type' => 'text',
-                'instructions' => 'Number only or full international format.',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => '+919876543210',
-            ),
-            array(
                 'key' => 'field_contact_form_shortcode',
                 'label' => 'Contact Form Shortcode',
                 'name' => 'contact_form_shortcode',
@@ -691,6 +715,102 @@ if( function_exists('acf_add_local_field_group') ) {
                 ),
                 'placeholder' => '© [current_year] Your Company Name. All rights reserved.',
                 'new_lines' => 'br',
+            ),
+            array(
+                'key' => 'field_theme_logo',
+                'label' => 'Custom Logo',
+                'name' => 'theme_logo',
+                'type' => 'image',
+                'instructions' => 'Upload a custom logo for your site (overrides the default custom logo)',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_theme_primary_color',
+                'label' => 'Primary Color',
+                'name' => 'theme_primary_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the primary brand color for your site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '#3b82f6',
+            ),
+            array(
+                'key' => 'field_theme_secondary_color',
+                'label' => 'Secondary Color',
+                'name' => 'theme_secondary_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the secondary brand color for your site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '#64748b',
+            ),
+            array(
+                'key' => 'field_theme_accent_color',
+                'label' => 'Accent Color',
+                'name' => 'theme_accent_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose an accent color for buttons and highlights',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '#f59e0b',
+            ),
+            array(
+                'key' => 'field_theme_text_color',
+                'label' => 'Text Color',
+                'name' => 'theme_text_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the main text color',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '#1f2937',
+            ),
+            array(
+                'key' => 'field_enable_custom_colors',
+                'label' => 'Enable Custom Colors',
+                'name' => 'enable_custom_colors',
+                'type' => 'true_false',
+                'instructions' => 'Enable custom colors throughout the site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'message' => 'Use custom brand colors',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Enabled',
+                'ui_off_text' => 'Disabled',
             ),
         ),
         'location' => array(
@@ -1014,6 +1134,177 @@ if( function_exists('acf_add_local_field_group') ) {
     ));
 }
 
+/**
+ * ACF Product Fields Field Group
+ */
+if( function_exists('acf_add_local_field_group') ) {
+    acf_add_local_field_group(array(
+        'key' => 'group_product_details',
+        'title' => 'Product Details',
+        'fields' => array(
+            array(
+                'key' => 'field_product_price',
+                'label' => 'Price',
+                'name' => 'product_price',
+                'type' => 'text',
+                'instructions' => 'Product price (e.g. $99.99 or starting from $500)',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placeholder' => '$99.99',
+            ),
+            array(
+                'key' => 'field_product_sku',
+                'label' => 'SKU',
+                'name' => 'product_sku',
+                'type' => 'text',
+                'instructions' => 'Product SKU or model number',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placeholder' => 'SKU-001',
+            ),
+            array(
+                'key' => 'field_product_gallery',
+                'label' => 'Product Gallery',
+                'name' => 'product_gallery',
+                'type' => 'gallery',
+                'instructions' => 'Upload multiple images for the product gallery',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'min' => '',
+                'max' => '',
+                'preview_size' => 'large',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_product_specifications',
+                'label' => 'Product Specifications',
+                'name' => 'product_specifications',
+                'type' => 'repeater',
+                'instructions' => 'Add product specifications like dimensions, materials, etc.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'collapsed' => '',
+                'min' => 0,
+                'max' => 0,
+                'layout' => 'table',
+                'button_label' => 'Add Specification',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_product_spec_label',
+                        'label' => 'Label',
+                        'name' => 'label',
+                        'type' => 'text',
+                        'instructions' => 'e.g. Dimensions, Weight, Material',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'placeholder' => 'Dimensions',
+                    ),
+                    array(
+                        'key' => 'field_product_spec_value',
+                        'label' => 'Value',
+                        'name' => 'value',
+                        'type' => 'text',
+                        'instructions' => 'e.g. 120cm x 80cm, 25kg, Oak Wood',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'placeholder' => '120cm x 80cm',
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_product_featured',
+                'label' => 'Featured Product',
+                'name' => 'product_featured',
+                'type' => 'true_false',
+                'instructions' => 'Mark this product as featured',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'field_product_short_description',
+                'label' => 'Short Description',
+                'name' => 'product_short_description',
+                'type' => 'textarea',
+                'instructions' => 'Brief product description for listings',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placeholder' => 'Brief description of the product...',
+                'new_lines' => 'br',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'product',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+        'show_in_rest' => 0,
+    ));
+}
+
 function cc_breadcrumbs() {
     if (is_front_page()) {
         return;
@@ -1060,4 +1351,45 @@ function cc_breadcrumbs() {
     }
 
     echo '</nav>';
+}
+
+/**
+ * Output custom theme colors as CSS custom properties
+ */
+function cc_output_custom_colors() {
+    if (get_field('enable_custom_colors', 'option')) {
+        $primary_color = get_field('theme_primary_color', 'option') ?: '#3b82f6';
+        $secondary_color = get_field('theme_secondary_color', 'option') ?: '#64748b';
+        $accent_color = get_field('theme_accent_color', 'option') ?: '#f59e0b';
+        $text_color = get_field('theme_text_color', 'option') ?: '#1f2937';
+        
+        echo '<style id="cc-custom-colors">';
+        echo ':root {';
+        echo '--cc-primary-color: ' . esc_attr($primary_color) . ';';
+        echo '--cc-secondary-color: ' . esc_attr($secondary_color) . ';';
+        echo '--cc-accent-color: ' . esc_attr($accent_color) . ';';
+        echo '--cc-text-color: ' . esc_attr($text_color) . ';';
+        echo '}';
+        echo '</style>';
+    }
+}
+add_action('wp_head', 'cc_output_custom_colors');
+
+/**
+ * Get custom logo URL or fallback to default
+ */
+function cc_get_custom_logo_url() {
+    $custom_logo = get_field('theme_logo', 'option');
+    
+    if ($custom_logo && isset($custom_logo['url'])) {
+        return $custom_logo['url'];
+    }
+    
+    // Fallback to default custom logo
+    $default_logo = get_theme_mod('custom_logo');
+    if ($default_logo) {
+        return wp_get_attachment_image_url($default_logo, 'full');
+    }
+    
+    return false;
 }

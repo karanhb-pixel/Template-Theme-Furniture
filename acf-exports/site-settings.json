@@ -362,6 +362,102 @@
                 },
                 "placeholder": "© [current_year] Your Company Name. All rights reserved.",
                 "new_lines": "br"
+            },
+            {
+                "key": "field_theme_logo",
+                "label": "Custom Logo",
+                "name": "theme_logo",
+                "type": "image",
+                "instructions": "Upload a custom logo for your site (overrides the default custom logo)",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all"
+            },
+            {
+                "key": "field_theme_primary_color",
+                "label": "Primary Color",
+                "name": "theme_primary_color",
+                "type": "color_picker",
+                "instructions": "Choose the primary brand color for your site",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#3b82f6"
+            },
+            {
+                "key": "field_theme_secondary_color",
+                "label": "Secondary Color",
+                "name": "theme_secondary_color",
+                "type": "color_picker",
+                "instructions": "Choose the secondary brand color for your site",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#64748b"
+            },
+            {
+                "key": "field_theme_accent_color",
+                "label": "Accent Color",
+                "name": "theme_accent_color",
+                "type": "color_picker",
+                "instructions": "Choose an accent color for buttons and highlights",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#f59e0b"
+            },
+            {
+                "key": "field_theme_text_color",
+                "label": "Text Color",
+                "name": "theme_text_color",
+                "type": "color_picker",
+                "instructions": "Choose the main text color",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#1f2937"
+            },
+            {
+                "key": "field_enable_custom_colors",
+                "label": "Enable Custom Colors",
+                "name": "enable_custom_colors",
+                "type": "true_false",
+                "instructions": "Enable custom colors throughout the site",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Use custom brand colors",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "Enabled",
+                "ui_off_text": "Disabled"
             }
         ],
         "location": [
