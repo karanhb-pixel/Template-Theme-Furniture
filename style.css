@@ -43,8 +43,7 @@ Table of Contents
 
 body {
   margin: 0;
-  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--cc-body-font, "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   color: #1f2933;
   background: #f5f6f8;
 }

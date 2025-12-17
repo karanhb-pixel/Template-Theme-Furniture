@@ -24,8 +24,15 @@
 		<header id="masthead" class="site-header">
 			<div class="container header-inner">
 				<a href="<?php echo home_url('/'); ?>" class="logo">
-					<span class="logo-mark">Logo Icon</span>
-					<span class="logo-text">Logo Text</span>
+					<?php
+					$logo = get_field('theme_logo', 'option');
+					$company_name = get_field('company_name', 'option') ?: get_bloginfo('name');
+					if ($logo) : ?>
+						<img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($company_name); ?>" class="logo-image">
+					<?php else : ?>
+						<span class="logo-mark"><?php echo esc_html($company_name); ?></span>
+					<?php endif; ?>
+					<span class="logo-text"><?php echo esc_html($company_name); ?></span>
 				</a>
 
 

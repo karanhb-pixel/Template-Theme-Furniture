@@ -344,18 +344,234 @@ if( function_exists('acf_add_options_page') ) {
         'menu_title'    => 'Site Settings',
         'menu_slug'     => 'site-settings',
         'capability'    => 'edit_posts',
-        'redirect'      => false
+        'redirect'      => false,
+        'position'      => 2
     ));
 }
 
 /**
- * ACF Site Settings Field Group
+ * ACF Site Settings - Tabbed Field Group
+ * Complete site settings with organized tabbed interface
  */
 if( function_exists('acf_add_local_field_group') ) {
     acf_add_local_field_group(array(
-        'key' => 'group_site_settings',
-        'title' => 'Site Settings',
+        'key' => 'group_site_settings_complete',
+        'title' => 'Site Settings - Complete',
         'fields' => array(
+            array(
+                'key' => 'field_tab_site_branding',
+                'label' => 'Site Branding',
+                'name' => 'tab_site_branding',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'placement' => 'top',
+                'endpoint' => 0
+            ),
+            array(
+                'key' => 'field_theme_logo',
+                'label' => 'Custom Logo',
+                'name' => 'theme_logo',
+                'type' => 'image',
+                'instructions' => 'Upload a custom logo for your site (overrides the default custom logo)',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'insert' => 'append',
+                'library' => 'all'
+            ),
+            array(
+                'key' => 'field_enable_custom_colors',
+                'label' => 'Enable Custom Colors',
+                'name' => 'enable_custom_colors',
+                'type' => 'true_false',
+                'instructions' => 'Enable custom colors throughout the site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'message' => 'Use custom brand colors',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Enabled',
+                'ui_off_text' => 'Disabled'
+            ),
+            array(
+                'key' => 'field_theme_primary_color',
+                'label' => 'Primary Color',
+                'name' => 'theme_primary_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the primary brand color for your site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '#3b82f6'
+            ),
+            array(
+                'key' => 'field_theme_secondary_color',
+                'label' => 'Secondary Color',
+                'name' => 'theme_secondary_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the secondary brand color for your site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '#64748b'
+            ),
+            array(
+                'key' => 'field_theme_accent_color',
+                'label' => 'Accent Color',
+                'name' => 'theme_accent_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose an accent color for buttons and highlights',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '#f59e0b'
+            ),
+            array(
+                'key' => 'field_theme_text_color',
+                'label' => 'Text Color',
+                'name' => 'theme_text_color',
+                'type' => 'color_picker',
+                'instructions' => 'Choose the main text color',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '#1f2937'
+            ),
+            array(
+                'key' => 'field_enable_custom_fonts',
+                'label' => 'Enable Custom Fonts',
+                'name' => 'enable_custom_fonts',
+                'type' => 'true_false',
+                'instructions' => 'Enable custom fonts throughout the site',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'message' => 'Use custom Google Fonts',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Enabled',
+                'ui_off_text' => 'Disabled'
+            ),
+            array(
+                'key' => 'field_theme_heading_font',
+                'label' => 'Heading Font',
+                'name' => 'theme_heading_font',
+                'type' => 'select',
+                'instructions' => 'Choose the font for headings',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'choices' => array(
+                    'Poppins' => 'Poppins',
+                    'Inter' => 'Inter',
+                    'Roboto' => 'Roboto',
+                    'Open Sans' => 'Open Sans',
+                    'Lato' => 'Lato',
+                    'Montserrat' => 'Montserrat',
+                    'Nunito' => 'Nunito',
+                    'Playfair Display' => 'Playfair Display',
+                    'Merriweather' => 'Merriweather',
+                    'Source Sans Pro' => 'Source Sans Pro'
+                ),
+                'default_value' => 'Poppins',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'value',
+                'placeholder' => ''
+            ),
+            array(
+                'key' => 'field_theme_body_font',
+                'label' => 'Body Font',
+                'name' => 'theme_body_font',
+                'type' => 'select',
+                'instructions' => 'Choose the font for body text',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'choices' => array(
+                    'Poppins' => 'Poppins',
+                    'Inter' => 'Inter',
+                    'Roboto' => 'Roboto',
+                    'Open Sans' => 'Open Sans',
+                    'Lato' => 'Lato',
+                    'Montserrat' => 'Montserrat',
+                    'Nunito' => 'Nunito',
+                    'Source Sans Pro' => 'Source Sans Pro',
+                    'Noto Sans' => 'Noto Sans',
+                    'Work Sans' => 'Work Sans'
+                ),
+                'default_value' => 'Poppins',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 0,
+                'return_format' => 'value',
+                'placeholder' => ''
+            ),
+            array(
+                'key' => 'field_tab_about_information',
+                'label' => 'About Information',
+                'name' => 'tab_about_information',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'placement' => 'top',
+                'endpoint' => 0
+            ),
             array(
                 'key' => 'field_company_name',
                 'label' => 'Company Name',
@@ -366,10 +582,14 @@ if( function_exists('acf_add_local_field_group') ) {
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',
-                    'class' => '',
-                    'id' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'Your Company Name',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
             ),
             array(
                 'key' => 'field_company_tagline',
@@ -382,134 +602,13 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'Transforming Spaces. Crafting Futures.',
-            ),
-            array(
-                'key' => 'field_hero_kicker',
-                'label' => 'Hero Kicker Text',
-                'name' => 'hero_kicker',
-                'type' => 'text',
-                'instructions' => 'Short text above the hero title',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Interior Designing & Modular Furniture',
-            ),
-            array(
-                'key' => 'field_hero_title',
-                'label' => 'Hero Title',
-                'name' => 'hero_title',
-                'type' => 'text',
-                'instructions' => 'Main hero heading',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Transforming Spaces. Crafting Futures.',
-            ),
-            array(
-                'key' => 'field_hero_subtitle',
-                'label' => 'Hero Subtitle',
-                'name' => 'hero_subtitle',
-                'type' => 'textarea',
-                'instructions' => 'Description text below the hero title',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Demo catalog showcasing our work and services.',
-                'new_lines' => 'br',
-            ),
-            array(
-                'key' => 'field_hero_image',
-                'label' => 'Hero Background Image',
-                'name' => 'hero_image',
-                'type' => 'image',
-                'instructions' => 'Upload a hero background image',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'return_format' => 'array',
-                'preview_size' => 'large',
-                'library' => 'all',
-            ),
-            array(
-                'key' => 'field_services_title',
-                'label' => 'Services Section Title',
-                'name' => 'services_title',
-                'type' => 'text',
-                'instructions' => 'Title for services section',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Our Services',
-            ),
-            array(
-                'key' => 'field_services_description',
-                'label' => 'Services Section Description',
-                'name' => 'services_description',
-                'type' => 'textarea',
-                'instructions' => 'Description for services section',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Explore the key service categories offered by our company.',
-                'new_lines' => 'br',
-            ),
-            array(
-                'key' => 'field_projects_title',
-                'label' => 'Projects Section Title',
-                'name' => 'projects_title',
-                'type' => 'text',
-                'instructions' => 'Title for projects section',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Latest Projects',
-            ),
-            array(
-                'key' => 'field_projects_description',
-                'label' => 'Projects Section Description',
-                'name' => 'projects_description',
-                'type' => 'textarea',
-                'instructions' => 'Description for projects section',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Explore our recent work and projects.',
-                'new_lines' => 'br',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
             ),
             array(
                 'key' => 'field_about_title',
@@ -522,9 +621,13 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'About Us',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
             ),
             array(
                 'key' => 'field_about_content',
@@ -537,10 +640,13 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'We are a professional company delivering high-quality services to our clients.',
-                'new_lines' => 'br',
+                'maxlength' => '',
+                'rows' => 4,
+                'new_lines' => 'br'
             ),
             array(
                 'key' => 'field_about_facts',
@@ -553,7 +659,7 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
                 'collapsed' => '',
                 'min' => 0,
@@ -572,9 +678,13 @@ if( function_exists('acf_add_local_field_group') ) {
                         'wrapper' => array(
                             'width' => '',
                             'class' => '',
-                            'id' => '',
+                            'id' => ''
                         ),
+                        'default_value' => '',
                         'placeholder' => 'Year of Establishment',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => ''
                     ),
                     array(
                         'key' => 'field_about_facts_value',
@@ -587,11 +697,198 @@ if( function_exists('acf_add_local_field_group') ) {
                         'wrapper' => array(
                             'width' => '',
                             'class' => '',
-                            'id' => '',
+                            'id' => ''
                         ),
+                        'default_value' => '',
                         'placeholder' => '2024',
-                    ),
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => ''
+                    )
+                )
+            ),
+            array(
+                'key' => 'field_tab_hero_section',
+                'label' => 'Hero Section',
+                'name' => 'tab_hero_section',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
                 ),
+                'placement' => 'top',
+                'endpoint' => 0
+            ),
+            array(
+                'key' => 'field_hero_kicker',
+                'label' => 'Hero Kicker Text',
+                'name' => 'hero_kicker',
+                'type' => 'text',
+                'instructions' => 'Short text above the hero title',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Interior Designing & Modular Furniture',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_hero_title',
+                'label' => 'Hero Title',
+                'name' => 'hero_title',
+                'type' => 'text',
+                'instructions' => 'Main hero heading',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Transforming Spaces. Crafting Futures.',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_hero_subtitle',
+                'label' => 'Hero Subtitle',
+                'name' => 'hero_subtitle',
+                'type' => 'textarea',
+                'instructions' => 'Description text below the hero title',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Demo catalog showcasing our work and services.',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
+            ),
+            array(
+                'key' => 'field_hero_image',
+                'label' => 'Hero Background Image',
+                'name' => 'hero_image',
+                'type' => 'image',
+                'instructions' => 'Upload a hero background image',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'large',
+                'insert' => 'append',
+                'library' => 'all'
+            ),
+            array(
+                'key' => 'field_tab_content_sections',
+                'label' => 'Content Sections',
+                'name' => 'tab_content_sections',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'placement' => 'top',
+                'endpoint' => 0
+            ),
+            array(
+                'key' => 'field_services_title',
+                'label' => 'Services Section Title',
+                'name' => 'services_title',
+                'type' => 'text',
+                'instructions' => 'Title for services section',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Our Services',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_services_description',
+                'label' => 'Services Section Description',
+                'name' => 'services_description',
+                'type' => 'textarea',
+                'instructions' => 'Description for services section',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Explore the key service categories offered by our company.',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
+            ),
+            array(
+                'key' => 'field_projects_title',
+                'label' => 'Projects Section Title',
+                'name' => 'projects_title',
+                'type' => 'text',
+                'instructions' => 'Title for projects section',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'acf-group-header',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Latest Projects',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_projects_description',
+                'label' => 'Projects Section Description',
+                'name' => 'projects_description',
+                'type' => 'textarea',
+                'instructions' => 'Description for projects section',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Explore our recent work and projects.',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
             ),
             array(
                 'key' => 'field_contact_title',
@@ -603,10 +900,14 @@ if( function_exists('acf_add_local_field_group') ) {
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',
-                    'class' => '',
-                    'id' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'Contact Us',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
             ),
             array(
                 'key' => 'field_contact_description',
@@ -619,56 +920,50 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'Use the form below to share your project details and we\'ll get back to you.',
-                'new_lines' => 'br',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
             ),
             array(
                 'key' => 'field_contact_phone',
                 'label' => 'Primary Phone',
                 'name' => 'contact_phone',
                 'type' => 'text',
-                'instructions' => '',
+                'instructions' => 'Your primary contact phone number',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
-                    'width' => '',
+                    'width' => '50',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => '+91-9876543210',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
             ),
             array(
                 'key' => 'field_contact_email',
                 'label' => 'Contact Email',
                 'name' => 'contact_email',
                 'type' => 'email',
-                'instructions' => '',
+                'instructions' => 'Your primary contact email',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
-                    'width' => '',
+                    'width' => '50',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => 'contact@yourcompany.com',
-            ),
-            array(
-                'key' => 'field_contact_address',
-                'label' => 'Office Address',
-                'name' => 'contact_address',
-                'type' => 'textarea',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placeholder' => 'Your office address',
-                'new_lines' => 'br',
+                'prepend' => '',
+                'append' => ''
             ),
             array(
                 'key' => 'field_contact_whatsapp',
@@ -679,11 +974,34 @@ if( function_exists('acf_add_local_field_group') ) {
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
-                    'width' => '',
+                    'width' => '50',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => '+919876543210',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_contact_address',
+                'label' => 'Office Address',
+                'name' => 'contact_address',
+                'type' => 'textarea',
+                'instructions' => 'Your business office address',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => '',
+                'placeholder' => 'Your office address',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
             ),
             array(
                 'key' => 'field_contact_form_shortcode',
@@ -696,9 +1014,244 @@ if( function_exists('acf_add_local_field_group') ) {
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
-                    'id' => '',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => '[contact-form-7 id="123"]',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_tab_team_section',
+                'label' => 'Team Section',
+                'name' => 'tab_team_section',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'placement' => 'top',
+                'endpoint' => 0
+            ),
+            array(
+                'key' => 'field_team_title',
+                'label' => 'Team Section Title',
+                'name' => 'about_team_title',
+                'type' => 'text',
+                'instructions' => 'Enter the main title for the team section (e.g., "Meet Our Team")',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
+                ),
+                'default_value' => 'Meet Our Team',
+                'placeholder' => 'Enter team section title...',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => ''
+            ),
+            array(
+                'key' => 'field_team_description',
+                'label' => 'Team Section Description',
+                'name' => 'about_team_description',
+                'type' => 'textarea',
+                'instructions' => 'Enter a description for the team section',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'default_value' => 'The talented individuals behind our success',
+                'placeholder' => 'Describe your team section...',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => 'br'
+            ),
+            array(
+                'key' => 'field_team_members',
+                'label' => 'Team Members',
+                'name' => 'about_team_members',
+                'type' => 'repeater',
+                'instructions' => 'Add team members to display in the about page',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'collapsed' => 'field_team_member_name',
+                'min' => 1,
+                'max' => 12,
+                'layout' => 'row',
+                'button_label' => 'Add Team Member',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_team_member_photo',
+                        'label' => 'Member Photo',
+                        'name' => 'photo',
+                        'type' => 'image',
+                        'instructions' => 'Upload a professional photo of the team member',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'return_format' => 'array',
+                        'preview_size' => 'medium',
+                        'insert' => 'append',
+                        'library' => 'all'
+                    ),
+                    array(
+                        'key' => 'field_team_member_name',
+                        'label' => 'Member Name',
+                        'name' => 'name',
+                        'type' => 'text',
+                        'instructions' => 'Enter the full name of the team member',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'John Doe',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => ''
+                    ),
+                    array(
+                        'key' => 'field_team_member_role',
+                        'label' => 'Role/Position',
+                        'name' => 'role',
+                        'type' => 'text',
+                        'instructions' => 'Enter the member\'s job title or role',
+                        'required' => 1,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'Founder & CEO',
+                        'prepend' => '',
+                        'append' => '',
+                        'maxlength' => ''
+                    ),
+                    array(
+                        'key' => 'field_team_member_bio',
+                        'label' => 'Biography',
+                        'name' => 'bio',
+                        'type' => 'textarea',
+                        'instructions' => 'Enter a brief biography or description of the team member',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'Brief description of the team member\'s experience and background...',
+                        'maxlength' => 500,
+                        'rows' => 4,
+                        'new_lines' => 'br'
+                    ),
+                    array(
+                        'key' => 'field_team_member_linkedin',
+                        'label' => 'LinkedIn URL',
+                        'name' => 'linkedin',
+                        'type' => 'url',
+                        'instructions' => 'Enter LinkedIn profile URL (optional)',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '50',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'https://linkedin.com/in/username',
+                        'prepend' => '',
+                        'append' => ''
+                    ),
+                    array(
+                        'key' => 'field_team_member_email',
+                        'label' => 'Email Address',
+                        'name' => 'email',
+                        'type' => 'email',
+                        'instructions' => 'Enter email address (optional)',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '50',
+                            'class' => '',
+                            'id' => ''
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'email@company.com',
+                        'prepend' => '',
+                        'append' => ''
+                    )
+                )
+            ),
+            array(
+                'key' => 'field_team_section_options',
+                'label' => 'Section Options',
+                'name' => 'about_team_options',
+                'type' => 'checkbox',
+                'instructions' => 'Configure team section display options',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'choices' => array(
+                    'show_social_links' => 'Show social media links',
+                    'show_email' => 'Show email addresses',
+                    'enable_hover_effects' => 'Enable hover effects',
+                    'show_biography' => 'Show member biographies',
+                    'grid_layout' => 'Use grid layout (recommended)'
+                ),
+                'allow_custom' => 0,
+                'default_value' => array(
+                    'show_biography',
+                    'grid_layout'
+                ),
+                'layout' => 'horizontal',
+                'toggle' => 0,
+                'return_format' => 'value'
+            ),
+            array(
+                'key' => 'field_tab_footer_settings',
+                'label' => 'Footer Settings',
+                'name' => 'tab_footer_settings',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => ''
+                ),
+                'placement' => 'top',
+                'endpoint' => 0
             ),
             array(
                 'key' => 'field_footer_copyright',
@@ -710,127 +1263,34 @@ if( function_exists('acf_add_local_field_group') ) {
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',
-                    'class' => '',
-                    'id' => '',
+                    'class' => 'acf-field-group-header',
+                    'id' => ''
                 ),
+                'default_value' => '',
                 'placeholder' => '© [current_year] Your Company Name. All rights reserved.',
-                'new_lines' => 'br',
-            ),
-            array(
-                'key' => 'field_theme_logo',
-                'label' => 'Custom Logo',
-                'name' => 'theme_logo',
-                'type' => 'image',
-                'instructions' => 'Upload a custom logo for your site (overrides the default custom logo)',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'return_format' => 'array',
-                'preview_size' => 'medium',
-                'library' => 'all',
-            ),
-            array(
-                'key' => 'field_theme_primary_color',
-                'label' => 'Primary Color',
-                'name' => 'theme_primary_color',
-                'type' => 'color_picker',
-                'instructions' => 'Choose the primary brand color for your site',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '#3b82f6',
-            ),
-            array(
-                'key' => 'field_theme_secondary_color',
-                'label' => 'Secondary Color',
-                'name' => 'theme_secondary_color',
-                'type' => 'color_picker',
-                'instructions' => 'Choose the secondary brand color for your site',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '#64748b',
-            ),
-            array(
-                'key' => 'field_theme_accent_color',
-                'label' => 'Accent Color',
-                'name' => 'theme_accent_color',
-                'type' => 'color_picker',
-                'instructions' => 'Choose an accent color for buttons and highlights',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '#f59e0b',
-            ),
-            array(
-                'key' => 'field_theme_text_color',
-                'label' => 'Text Color',
-                'name' => 'theme_text_color',
-                'type' => 'color_picker',
-                'instructions' => 'Choose the main text color',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '#1f2937',
-            ),
-            array(
-                'key' => 'field_enable_custom_colors',
-                'label' => 'Enable Custom Colors',
-                'name' => 'enable_custom_colors',
-                'type' => 'true_false',
-                'instructions' => 'Enable custom colors throughout the site',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'message' => 'Use custom brand colors',
-                'default_value' => 0,
-                'ui' => 1,
-                'ui_on_text' => 'Enabled',
-                'ui_off_text' => 'Disabled',
-            ),
+                'maxlength' => '',
+                'rows' => 2,
+                'new_lines' => 'br'
+            )
         ),
         'location' => array(
             array(
                 array(
                     'param' => 'options_page',
                     'operator' => '==',
-                    'value' => 'site-settings',
-                ),
-            ),
+                    'value' => 'site-settings'
+                )
+            )
         ),
-        'menu_order' => 0,
+        'menu_order' => 1,
         'position' => 'normal',
         'style' => 'default',
         'label_placement' => 'top',
         'instruction_placement' => 'label',
         'hide_on_screen' => '',
         'active' => true,
-        'description' => '',
-        'show_in_rest' => 0,
+        'description' => 'Complete site settings with organized tabbed interface',
+        'show_in_rest' => 0
     ));
 }
 
